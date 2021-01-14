@@ -1,0 +1,20 @@
+2021-01-14 17:30:21 INFO  ===오픈===
+2021-01-14 17:30:21 INFO  [Eric] Ada 님이 Latte 를 주문하였습니다.
+2021-01-14 17:30:21 INFO  [Tom] Ada 님의 Latte 만드는 중...
+2021-01-14 17:30:23 INFO  [Eric] Beth 님이 Latte 를 주문하였습니다.
+2021-01-14 17:30:23 INFO  [Chicol] Beth 님의 Latte 만드는 중...
+2021-01-14 17:30:24 INFO  [Tom] Ada 님의 Latte 가 완성되었습니다.
+2021-01-14 17:30:25 INFO  [Eric] Coco 님이 Tea 를 주문하였습니다.
+2021-01-14 17:30:25 INFO  [Tom] Coco 님의 Tea 만드는 중...
+2021-01-14 17:30:26 INFO  [Chicol] Beth 님의 Latte 가 완성되었습니다.
+2021-01-14 17:30:27 INFO  [Eric] Daniel 님이 Americano 를 주문하였습니다.
+2021-01-14 17:30:27 INFO  [Chicol] Daniel 님의 Americano 만드는 중...
+2021-01-14 17:30:28 INFO  [Tom] Coco 님의 Tea 가 완성되었습니다.
+2021-01-14 17:30:29 INFO  [Eric] Emile 님이 Americano 를 주문하였습니다.
+2021-01-14 17:30:29 INFO  [Tom] Emile 님의 Americano 만드는 중...
+2021-01-14 17:30:30 INFO  [Chicol] Daniel 님의 Americano 가 완성되었습니다.
+2021-01-14 17:30:32 INFO  [Tom] Emile 님의 Americano 가 완성되었습니다.
+2021-01-14 17:30:41 INFO  ===종료===
+2021-01-14 17:30:41 INFO  ====정산====
+2021-01-14 17:30:41 INFO  판매 내역 조회: {Tea=1, Americano=2, Latte=2}
+2021-01-14 17:30:41 INFO  현재까지의 매출은 20,000원 입니다.
