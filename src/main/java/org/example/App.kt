@@ -1,14 +1,15 @@
 package org.example
 
 import org.apache.log4j.Logger
+import org.example.Constants.CUSTOMER_SIZE
+import org.example.Constants.STORE_RUNNING_TIME
+import java.util.concurrent.ArrayBlockingQueue
+import java.util.concurrent.BlockingQueue
 import kotlin.jvm.JvmStatic
 
-object App : Cashier.ICashier {
+object App {
     var logger: Logger = Logger.getLogger(App::class.java)
-    private const val STORE_RUNNING_TIME = 10000L
-    val managerList = listOf("Tom", "Chicol", "Eric")
-    private var count = 0
-    private val salesMap: MutableMap<String, Int> = hashMapOf()
+    val salesMap: MutableMap<String, Int> = hashMapOf()
     val menuList = Menu().menuList
 
     @JvmStatic
@@ -19,37 +20,25 @@ object App : Cashier.ICashier {
     }
 
     private fun open() {
-        logger.info("===오픈===")
-
-
-        while (count < 5) {
-            val customer = Customer()
-            val customerName = customer.customerList[count]
-            val menuNum = (Math.random() * (menuList.size - 1)).toInt()
-            val orderData = OrderData(customerName, menuNum)
-            customer.orderCoffee(orderData)
-
-            deliverOrder(orderData)
-
-            Thread.sleep(2000)
-            Cashier().addSales(salesMap, menuList[orderData.menuNum].name)
-
-            count++
+        val queue: BlockingQueue<OrderData> = ArrayBlockingQueue(CUSTOMER_SIZE)
+        Manager().mangerList.forEach { managerData ->
+            when (managerData.type) {
+                "Cashier" -> {
+                    val cashier = Cashier(managerData.name, queue)
+                    cashier.start()
+                }
+                "Barista" -> {
+                    val barista = Barista(managerData.name, queue)
+                    barista.start()
+                }
+            }
         }
+        logger.info("===오픈===")
     }
 
     private fun close() {
         logger.info("===영업종료===")
         logger.info("===정산===")
-        Sales().calTotalSales(salesMap)
-        Sales().printSales(salesMap)
+        Sales(salesMap)
     }
-
-
-    override fun deliverOrder(orderData: OrderData) {
-        val barista = Barista(managerList[count % 2], orderData, menuList)
-        barista.start()
-    }
-
-
 }

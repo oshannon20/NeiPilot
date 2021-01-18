@@ -6,8 +6,13 @@ import java.text.DecimalFormat
 /**
  * POS(Point of Sales) 객체 - 총 매출 계산, 판매 내역 조회
  */
-class Sales {
-    fun calTotalSales(salesMap: MutableMap<String, Int>) {
+class Sales (private val salesMap: MutableMap<String, Int>){
+    init {
+        calTotalSales()
+        printSales()
+    }
+
+    private fun calTotalSales() {
         var totalSales = 0
 
         salesMap.forEach { (name, quantity) ->
@@ -17,7 +22,7 @@ class Sales {
         App.logger.info("현재까지의 매출은 ${setPriceFormat(totalSales)} 입니다.")
     }
 
-    fun printSales(salesMap: MutableMap<String, Int>) {
+    private fun printSales() {
         App.logger.info("판매 내역 조회: $salesMap")
     }
 
